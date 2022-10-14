@@ -1,0 +1,47 @@
+.footer {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 8px;
+  padding: 1rem;
+  background-color: white;
+  background-size: 400%;
+  border-radius: 0.5rem;
+  background-position: 100%;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.footer:is(:hover, :focus-within) {
+  background-position: 0;
+}
+
+.counter {
+  display: flex;
+  height: 185px;
+  justify-content: center;
+  align-items: center;
+  column-gap: 8px;
+  padding: 1rem;
+  background-color: white;
+  background-size: 400%;
+  border-radius: 0.5rem;
+  background-position: 100%;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.footer,
+.counter button {
+  border: 0;
+  background-color: blueviolet;
+  border-radius: 45px;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: aliceblue;
+  cursor: pointer;
+}

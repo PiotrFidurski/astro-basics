@@ -1,0 +1,27 @@
+---
+import Card from "./Card.astro";
+---
+
+<div class="container">
+  <script is:inline>
+    function greet() {
+      return fetch("https://randomuser.me/api/")
+        .then((r) => r.json())
+        .then((data) => {
+          return fetch("http://localhost:3000/api/greet", {
+            method: "post",
+            body: JSON.stringify({ data: data.results[0] }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              const node = document.querySelector(`[data-greet="greet"]`);
+              node.innerHTML = `Hi ${data}!`;
+            });
+        });
+    }
+  </script>
+  <div title="" class="counter">
+    <button onclick="greet()">Greet</button>
+    <p data-greet="greet"></p>
+  </div>
+</div>

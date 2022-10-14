@@ -1,0 +1,23 @@
+---
+import Feed from "../components/Feed.astro";
+import { Footer } from "../components/Footer";
+import Layout from "../layouts/Layout.astro";
+
+const response = await fetch("http://localhost:3000/api/posts");
+
+const data = await response.json();
+---
+
+<Layout title="Posts">
+  <main>
+    <h1>Your posts</h1>
+    <Feed data={data} />
+    <Footer client:visible />
+  </main>
+</Layout>
+<style>
+  h1 {
+    color: #444;
+    text-decoration: underline;
+  }
+</style>

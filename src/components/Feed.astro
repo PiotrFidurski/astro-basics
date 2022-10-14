@@ -1,0 +1,30 @@
+---
+import Card from "./Card.astro";
+import { InteractiveComponent } from "./InteractiveComponent";
+
+const { data } = Astro.props;
+console.log({ data: data[4].id % 3 === 0 });
+---
+
+<div class="container">
+  {
+    data.map((post) =>
+      post.id !== 0 && post.id % 3 === 0 ? (
+        <InteractiveComponent client:visible />
+      ) : (
+        <Card title={post.text} href={`/posts/${post.id}`} />
+      )
+    )
+  }
+</div>
+
+<style>
+  .container {
+    min-height: 2000px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+    height: 100%;
+    width: 100%;
+  }
+</style>

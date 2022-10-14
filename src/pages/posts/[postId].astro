@@ -1,0 +1,27 @@
+---
+import Card from "../../components/Card.astro";
+import Layout from "../../layouts/Layout.astro";
+
+const response = await fetch("http://localhost:3000/api/posts");
+
+const data = await response.json();
+
+export function getStaticPaths() {
+  return [{ params: { postId: data[0].id } }];
+}
+
+const { postId } = Astro.params;
+---
+
+<Layout title={String(postId)}>
+  <header><h1>{postId}</h1></header>
+  <Card title={data[postId].text} />
+</Layout>
+
+<style>
+  header {
+    text-align: center;
+    color: #444;
+    text-decoration: underline;
+  }
+</style>
