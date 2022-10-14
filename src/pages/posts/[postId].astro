@@ -15,7 +15,7 @@ const { postId } = Astro.params;
 
 <Layout title={String(postId)}>
   <header><h1>{postId}</h1></header>
-  <Card title={data[postId].text} />
+  <Card title={data[postId]?.text} />
 </Layout>
 
 <style>

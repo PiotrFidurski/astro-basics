@@ -1,4 +1,4 @@
-import { Counter } from "../Counter";
+import { Counter } from "../Counter/index";
 import "./index.css";
 
 export function Footer() {
