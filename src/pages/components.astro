@@ -1,6 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
 import Feed from "../components/Feed.astro";
 
 import { Counter } from "../components/Counter";
@@ -19,7 +18,9 @@ const data = await response.json();
       <Counter client:idle />
       <Greet />
     </ul>
-    <Feed data={data} />
+    <div>
+      <Feed data={data} />
+    </div>
     <Footer client:visible />
   </main>
 </Layout>

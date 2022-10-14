@@ -1,5 +1,5 @@
-import "./components.css";
-import { Counter } from "./Counter";
+import { Counter } from "../Counter";
+import "./index.css";
 
 export function Footer() {
   return (

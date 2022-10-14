@@ -1,14 +1,9 @@
 const PARAGRAPHS = 10;
 
-export async function get() {
-  let index = 0;
-  const response = await fetch(
-    `https://baconipsum.com/api/?callback=?type=all-meat&paras=${PARAGRAPHS}`
-  );
+let index = 0;
 
-  const responseJson = await response.json();
-
-  const data = responseJson.reduce((acc, value) => {
+const reduceData = (data) =>
+  data.reduce((acc, value) => {
     acc = [
       ...acc,
       {
@@ -19,6 +14,17 @@ export async function get() {
     index = index + 1;
     return acc;
   }, []);
+
+export async function get() {
+  const response = await fetch(
+    `https://baconipsum.com/api/?callback=?type=all-meat&paras=${PARAGRAPHS}`
+  );
+
+  const responseJson = await response.json();
+
+  const data = reduceData(responseJson);
+
+  index = 0;
 
   return new Response(JSON.stringify(data), { status: 200 });
 }

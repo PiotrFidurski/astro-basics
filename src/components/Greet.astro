@@ -1,7 +1,3 @@
----
-import Card from "./Card.astro";
----
-
 <div class="container">
   <script is:inline>
     function greet() {
@@ -20,7 +16,7 @@ import Card from "./Card.astro";
         });
     }
   </script>
-  <div title="" class="counter">
+  <div title="">
     <button onclick="greet()">Greet</button>
     <p data-greet="greet"></p>
   </div>
