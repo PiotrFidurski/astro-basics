@@ -1,29 +1,35 @@
 ---
+import { InteractiveComponent } from "./InteractiveComponent";
+
 export interface Props {
+  id: number;
   title: string;
   body?: string;
   href?: string;
 }
 
-const { href, title, body } = Astro.props;
+const { href, title, body, id } = Astro.props;
 ---
 
-<li class="link-card">
-  <a href={href}>
-    <h2>
-      {title}
-    </h2>
-    <p>
-      {body}
-      <slot />
-    </p>
-  </a>
-</li>
+<>
+  <li class="link-card" data-key={id}>
+    <a href={href}>
+      <h2>
+        {title}
+      </h2>
+      <p>
+        {body}
+        <slot />
+      </p>
+    </a>
+  </li>
+  {id !== 0 && id % 3 === 0 && <InteractiveComponent client:visible />}
+</>
 <style>
   .link-card {
     list-style: none;
     display: flex;
-    padding: 0.15rem;
+    padding: 0.25rem;
     background-color: white;
     background-image: var(--accent-gradient);
     background-size: 400%;

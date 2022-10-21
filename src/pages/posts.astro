@@ -3,7 +3,16 @@ import Feed from "../components/Feed.astro";
 import { Footer } from "../components/Footer";
 import Layout from "../layouts/Layout.astro";
 
-const response = await fetch("http://localhost:3000/api/posts");
+const response = await fetch(
+  import.meta.env.DEV
+    ? `${import.meta.env.API_DEVELOPMENT_URL}/posts`
+    : `${import.meta.env.API_PRODUCTION_URL}/posts`
+);
+
+console.log({
+  prod: import.meta.env.API_PRODUCTION_URL,
+  dev: import.meta.env.API_DEVELOPMENT_URL,
+});
 
 const data = await response.json();
 ---

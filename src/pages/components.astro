@@ -1,13 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Feed from "../components/Feed.astro";
-
 import { Counter } from "../components/Counter";
-import { Footer } from "../components/Footer";
 import Greet from "../components/Greet.astro";
-const response = await fetch("http://localhost:3000/api/posts");
-
-const data = await response.json();
 ---
 
 <Layout title="Welcome to Astro.">
@@ -18,9 +12,5 @@ const data = await response.json();
       <Counter client:idle />
       <Greet />
     </ul>
-    <div>
-      <Feed data={data} />
-    </div>
-    <Footer client:visible />
   </main>
 </Layout>

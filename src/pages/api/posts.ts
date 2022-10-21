@@ -1,7 +1,6 @@
 const PARAGRAPHS = 10;
 
 let index = 0;
-
 const reduceData = (data) =>
   data.reduce((acc, value) => {
     acc = [

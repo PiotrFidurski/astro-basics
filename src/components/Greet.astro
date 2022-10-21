@@ -1,13 +1,22 @@
 <div class="container">
-  <script is:inline>
+  <div title="">
+    <button id="button">Greet</button>
+    <p data-greet="greet"></p>
+  </div>
+  <script>
     function greet() {
       return fetch("https://randomuser.me/api/")
         .then((r) => r.json())
         .then((data) => {
-          return fetch("http://localhost:3000/api/greet", {
-            method: "post",
-            body: JSON.stringify({ data: data.results[0] }),
-          })
+          return fetch(
+            import.meta.env.DEV
+              ? `${import.meta.env.API_DEVELOPMENT_URL}/greet`
+              : `${import.meta.env.API_PRODUCTION_URL}/greet`,
+            {
+              method: "post",
+              body: JSON.stringify({ data: data.results[0] }),
+            }
+          )
             .then((response) => response.json())
             .then((data) => {
               const node = document.querySelector(`[data-greet="greet"]`);
@@ -15,9 +24,7 @@
             });
         });
     }
+
+    document.getElementById("button").addEventListener("click", greet);
   </script>
-  <div title="">
-    <button onclick="greet()">Greet</button>
-    <p data-greet="greet"></p>
-  </div>
 </div>
