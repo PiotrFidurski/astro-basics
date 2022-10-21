@@ -1,0 +1,26 @@
+.carousel_container {
+  position: relative;
+  overflow-x: hidden;
+  height: 200px;
+}
+
+.carousel_btn_left {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 4px;
+  width: auto;
+  transform: rotate(180deg);
+}
+
+.carousel_btn_right {
+  position: absolute;
+  z-index: 1;
+  width: auto;
+  top: 50%;
+  right: 4px;
+}
+
+.transition {
+  transition: transform 0.2s ease-in;
+}

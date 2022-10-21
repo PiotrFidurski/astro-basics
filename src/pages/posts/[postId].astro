@@ -2,11 +2,7 @@
 import Card from "../../components/Card.astro";
 import Layout from "../../layouts/Layout.astro";
 
-const response = await fetch(
-  import.meta.env.DEV
-    ? `${import.meta.env.API_DEVELOPMENT_URL}/posts`
-    : `${import.meta.env.API_PRODUCTION_URL}/posts`
-);
+const response = await fetch(`${import.meta.env.API_URL}/posts`);
 
 console.log({
   prod: import.meta.env.API_PRODUCTION_URL,

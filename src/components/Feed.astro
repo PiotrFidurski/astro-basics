@@ -1,5 +1,6 @@
 ---
 import Card from "./Card.astro";
+import { Carousel } from "./Carousel";
 
 const { data } = Astro.props;
 ---
@@ -10,6 +11,7 @@ const { data } = Astro.props;
       <Card title={post.text} href={`/posts/${post.id}`} id={post.id} />
     ))
   }
+  <Carousel client:visible />
 </div>
 
 <style>
