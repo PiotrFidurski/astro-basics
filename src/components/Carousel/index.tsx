@@ -6,24 +6,27 @@ import ArrowIcon from "./arrow.svg";
 
 import "./index.css";
 
+const STEP = 300;
+const MAX_CAROUSEL_STEP = 2800;
+
 export function Carousel() {
   const [state, setState] = useState(0);
   const totalSliderWidth = useRef(null);
 
   const handleLeftClick = () => {
     if (state < 0) {
-      setState((prevState) => prevState + 300);
+      setState((prevState) =>
+        Math.abs(prevState) - STEP < 0 ? 0 : prevState + STEP
+      );
     }
   };
 
   const handleRightClick = () => {
-    const maxWidth = 2800;
-
     if (Math.abs(state) <= totalSliderWidth.current.clientWidth) {
       setState((prevState) =>
-        Math.abs(prevState - 300) >= 2800
-          ? prevState - (maxWidth - Math.abs(prevState))
-          : prevState - 300
+        Math.abs(prevState - STEP) >= 2800
+          ? prevState - (MAX_CAROUSEL_STEP - Math.abs(prevState))
+          : prevState - STEP
       );
     }
   };
