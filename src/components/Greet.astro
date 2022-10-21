@@ -8,23 +8,10 @@
       return fetch("https://randomuser.me/api/")
         .then((r) => r.json())
         .then((data) => {
-          return fetch(
-            import.meta.env.DEV
-              ? `${import.meta.env.API_DEVELOPMENT_URL}/greet`
-              : `${import.meta.env.API_PRODUCTION_URL}/greet`,
-            {
-              method: "post",
-              body: JSON.stringify({ data: data.results[0] }),
-            }
-          )
-            .then((response) => response.json())
-            .then((data) => {
-              const node = document.querySelector(`[data-greet="greet"]`);
-              node.innerHTML = `Hi ${data}!`;
-            });
+          const node = document.querySelector(`[data-greet="greet"]`);
+          node.innerHTML = `Hi ${data.results[0]?.name?.first}!`;
         });
     }
-
     document.getElementById("button").addEventListener("click", greet);
   </script>
 </div>
