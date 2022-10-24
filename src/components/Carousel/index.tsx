@@ -1,15 +1,17 @@
 import { useState, useRef } from "react";
 
-import { data } from "./data";
-
 import ArrowIcon from "./arrow.svg";
 
 import "./index.css";
 
 const STEP = 300;
-const MAX_CAROUSEL_STEP = 2800;
+const MAX_CAROUSEL_STEP = 2820;
 
-export function Carousel() {
+interface Props {
+  data: string[];
+}
+
+export function Carousel({ data }: Props) {
   const [state, setState] = useState(0);
   const totalSliderWidth = useRef(null);
 
@@ -24,7 +26,7 @@ export function Carousel() {
   const handleRightClick = () => {
     if (Math.abs(state) <= totalSliderWidth.current.clientWidth) {
       setState((prevState) =>
-        Math.abs(prevState - STEP) >= 2800
+        Math.abs(prevState - STEP) >= MAX_CAROUSEL_STEP
           ? prevState - (MAX_CAROUSEL_STEP - Math.abs(prevState))
           : prevState - STEP
       );
@@ -60,7 +62,13 @@ export function Carousel() {
         }}
       >
         {data.map((img) => (
-          <img key={img} src={img} alt="photo" loading="lazy" />
+          <img
+            key={img}
+            src={img}
+            style={{ minWidth: "400px" }}
+            alt="photo"
+            loading="lazy"
+          />
         ))}
       </div>
     </div>

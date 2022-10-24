@@ -1,4 +1,4 @@
-export const data = [
+export const carouselData = [
   "//unsplash.it/400/200/?image=1",
   "//unsplash.it/400/200/?image=20",
   "//unsplash.it/400/200/?image=600",
